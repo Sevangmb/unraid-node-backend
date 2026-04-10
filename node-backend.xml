@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>NodeBackend</Name>
+  <Repository>sevanitito/node-backend</Repository>
+  <Registry>https://hub.docker.com/r/sevanitito/node-backend</Registry>
+  <Network>bridge</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Overview>
+    Serveur Node.js backend — image légère basée sur node:22-alpine.&#xD;&#xA;&#xD;&#xA;Cette image embarque l'application et démarre automatiquement au lancement du container.&#xD;&#xA;&#xD;&#xA;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━&#xD;&#xA;  ACCÈS API&#xD;&#xA;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━&#xD;&#xA;  URL : http://[IP]:[PORT:3000]&#xD;&#xA;&#xD;&#xA;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━&#xD;&#xA;  DONNÉES (sauvegardées sur le host)&#xD;&#xA;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━&#xD;&#xA;  /mnt/user/appdata/node-backend — logs et données persistantes
+  </Overview>
+  <Category>Tools:</Category>
+  <WebUI>http://[IP]:[PORT:3000]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/Sevangmb/unraid-node-backend/main/node-backend.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/Sevangmb/unraid-node-backend/main/assets/logo.png</Icon>
+  <ExtraParams/>
+  <Project>https://nodejs.org</Project>
+  <Support>https://github.com/Sevangmb/unraid-node-backend/issues</Support>
+  <GitHub>https://github.com/Sevangmb/unraid-node-backend</GitHub>
+  <DonateText/>
+  <DonateLink/>
+
+  <!-- ── Volume ──────────────────────────────────────────────────────────── -->
+  <Config Name="Données" Target="/app/data" Default="/mnt/user/appdata/node-backend/data" Mode="rw"
+    Description="Dossier où sont stockés les logs et les données persistantes de l'application."
+    Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/node-backend/data</Config>
+
+  <!-- ── Port ───────────────────────────────────────────────────────────── -->
+  <Config Name="Port HTTP" Target="3000" Default="3000" Mode="tcp"
+    Description="Port d'écoute du serveur Node.js."
+    Type="Port" Display="always" Required="true" Mask="false">3000</Config>
+
+  <!-- ── Variables ──────────────────────────────────────────────────────── -->
+  <Config Name="Environnement" Target="NODE_ENV" Default="production" Mode=""
+    Description="Mode d'exécution Node.js : production ou development."
+    Type="Variable" Display="advanced" Required="false" Mask="false">production</Config>
+
+</Container>

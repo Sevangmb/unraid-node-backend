@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+
+  node-backend:
+    image: sevanitito/node-backend:${APP_VERSION:-latest}
+    container_name: node-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      PORT: ${APP_PORT:-3000}
+    volumes:
+      - ${APP_DATA_PATH:-/mnt/user/appdata/node-backend}/data:/app/data
+    ports:
+      - "${APP_PORT:-3000}:3000"
