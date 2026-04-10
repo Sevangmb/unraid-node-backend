@@ -7,5 +7,4 @@ npm-debug.log*
 *.md
 .dockerignore
 docker-compose.yml
-docker-entrypoint.sh
 *.xml
