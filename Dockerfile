@@ -13,7 +13,7 @@ RUN apk add --no-cache tini
 
 # Dépendances Node (layer cache)
 COPY package*.json ./
-RUN npm ci --omit=dev && npm cache clean --force
+RUN npm install --omit=dev && npm cache clean --force
 
 # Code source
 COPY . .
